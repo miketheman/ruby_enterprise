@@ -28,28 +28,33 @@
 include_recipe "build-essential"
 
 packages = value_for_platform(
-    ["centos","redhat","fedora"] => {'default' => ['readline-devel', 'openssl-devel', 'patch']},
-    "default" => ['libssl-dev', 'libreadline5-dev']
-  )
+  ["centos", "redhat", "fedora"] => {
+    'default' => ['readline-devel', 'openssl-devel', 'patch']
+  },
+  "default" => ['libreadline5-dev', 'libssl-dev']
+)
 
 packages.each do |pkg|
   package pkg
 end
 
-remote_file "/tmp/ruby-enterprise-#{node[:ruby_enterprise][:version]}.tar.gz" do
-  source "#{node[:ruby_enterprise][:url]}.tar.gz"
-  not_if { ::File.exists?("/tmp/ruby-enterprise-#{node[:ruby_enterprise][:version]}.tar.gz") }
+ree_ver = node['ruby_enterprise']['version']
+ree_path = node['ruby_enterprise']['install_path']
+
+remote_file "#{Chef::Config[:file_cache_path]}/ruby-enterprise-#{ree_ver}.tar.gz" do
+  source "#{node['ruby_enterprise']['url']}.tar.gz"
+  not_if { ::File.exists?("#{Chef::Config[:file_cache_path]}/ruby-enterprise-#{ree_ver}.tar.gz") }
 end
 
 bash "Install Ruby Enterprise Edition" do
-  cwd "/tmp"
+  cwd Chef::Config[:file_cache_path]
   code <<-EOH
-  tar zxf ruby-enterprise-#{node[:ruby_enterprise][:version]}.tar.gz
-  ruby-enterprise-#{node[:ruby_enterprise][:version]}/installer \
-    --auto=#{node[:ruby_enterprise][:install_path]}
+  tar zxf ruby-enterprise-#{ree_ver}.tar.gz
+  ruby-enterprise-#{ree_ver}/installer \
+    --auto=#{ree_path}
   EOH
   not_if do
-    ::File.exists?("#{node[:ruby_enterprise][:install_path]}/bin/ree-version") &&
-    system("#{node[:ruby_enterprise][:install_path]}/bin/ree-version | grep -q '#{node[:ruby_enterprise][:version]}$'")
+    ::File.exists?("#{ree_path}/bin/ree-version") &&
+      system("#{ree_path}/bin/ree-version | grep -q '#{ree_ver}$'")
   end
 end

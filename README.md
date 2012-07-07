@@ -35,6 +35,14 @@ Install RubyGems under REE with the ree_gem definition.
 
 The definition supports parameters for source and version, though they are optional.
 
+Note
+====
+Ruby Enterprise Edition is being dropped sometime in the future.
+A [post from Phusion][1] explains the reason for dropping the support, and will eventually kill it off entirely.
+Until then, this will continue to serve as a working cookbook for REE.
+
+[1]: http://blog.phusion.nl/2012/02/21/ruby-enterprise-edition-1-8-7-2012-02-released-end-of-life-imminent/
+
 License and Authors
 ===================
 
