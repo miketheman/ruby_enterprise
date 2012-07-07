@@ -1,19 +1,25 @@
-= DESCRIPTION:
+# ruby_enterprise
+
+Description
+===========
 
 Installs Ruby Enterprise Edition (REE) from Phusion.
 
-= REQUIREMENTS:
+Requirements
+============
 
-Opscode's build-essential cookbook to get a compiler and associated files installed.
+## Cookbooks:
+* `build-essential` - get a compiler and associated files
 
-= ATTRIBUTES: 
+Attributes
+==========
 
-* ruby_enterprise[:install_path] - Location to install REE. Default /opt/ruby-enterprise
-* ruby_enterprise[:version] - Version-datestamp to use. Default 1.8.7-2011.03. May lag behind latest REE release.
-* ruby_enterprise[:url] - URL to download. Default is from GoogleCode, with the version specified. Note the download ID must be updated when there are new releases.
+* `node['ruby_enterprise']['install_path']` - Location to install REE. Default /opt/ruby-enterprise
+* `node['ruby_enterprise']['version']` - Version to install. Looks like `1.8.7-2012.02`
+* `node['ruby_enterprise']['url']` - URL to download. Default is from GoogleCode, with the version specified
 
-= USAGE:
-
+Usage
+=====
 Include the ruby_enterprise recipe to install REE.
 
     include_recipe "ruby_enterprise"
@@ -29,14 +35,15 @@ Install RubyGems under REE with the ree_gem definition.
 
 The definition supports parameters for source and version, though they are optional.
 
-= LICENSE and AUTHOR:
+License and Authors
+===================
 
 Author:: Mike Fiedler (<miketheman@gmail.com>)
 Author:: Joshua Timberman (<joshua@opscode.com>)
 Author:: Sean Cribbs (<seancribbs@gmail.com>)
 Author:: Michael Hale (<mikehale@gmail.com>)
 
-Copyright:: 2011, Mike Fiedler
+Copyright:: 2011-2012, Mike Fiedler
 Copyright:: 2009-2010, Opscode, Inc.
 Copyright:: 2009, Sean Cribbs
 Copyright:: 2009, Michael Hale
