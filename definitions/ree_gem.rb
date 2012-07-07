@@ -2,8 +2,10 @@
 # Cookbook Name:: ruby_enterprise
 # Recipe:: ree_gem
 #
+# Author:: Mike Fiedler (<miketheman@gmail.com>)
 # Author:: Joshua Timberman (<joshua@opscode.com>)
 #
+# Copyright:: 2011-2012, Mike Fiedler
 # Copyright 2009, Opscode, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
