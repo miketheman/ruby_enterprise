@@ -1,4 +1,4 @@
-# ruby_enterprise
+# ruby_enterprise [![Build Status](https://secure.travis-ci.org/miketheman/ruby_enterprise.png?branch=master)](http://travis-ci.org/miketheman/ruby_enterprise)
 
 Description
 ===========
