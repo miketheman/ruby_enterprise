@@ -31,6 +31,9 @@ packages = value_for_platform(
   ["centos", "redhat", "fedora"] => {
     'default' => ['readline-devel', 'openssl-devel', 'patch']
   },
+  ["ubuntu"] => {
+    '12.04' => ['libreadline-dev', 'libssl-dev']
+  },
   "default" => ['libreadline5-dev', 'libssl-dev']
 )
 
